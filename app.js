@@ -11,7 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 const mongoose = require("mongoose");
-const url = 'mongodb://localhost:27017/conFusion';
+const url = 'mongodb+srv://suki_mongo:mongolearn@mflix.gsftn.mongodb.net/Urlshortener?retryWrites=true&w=majority';
 mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

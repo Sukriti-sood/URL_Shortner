@@ -15,6 +15,7 @@ function App() {
       url:url
     })
     .then((res)=>{
+      console.log(res.status)
       console.log(res.data.shorten);
       setlink(res.data.shorten);
     })
@@ -36,7 +37,7 @@ function App() {
       </div>
       <div className="mt'-5">
         <h3 className="res">Result</h3>
-        <div className="result"><a href={link}>{link}</a></div>
+        <div className="result"><a href={link}><p></p>{link}</a></div>
       </div>
       </div>
     </div>
