@@ -4,7 +4,7 @@
 
 # Comment to be posted to on first time issues
 newIssueWelcomeComment: >
- Hi Welcome to **kidney-exchange**!💖, Thanks for opening your first issue here🌸 Be sure to follow the issue template✨ You can Start working on the issue , Don't wait for it to be assigned 🌸.
+ Hi Welcome to **kidney-exchange**!💖, Thanks for opening your first issue here🌸 Be sure to follow the issue template✨You can Start working on the issue , Don't wait for it to be assigned 🌸.
 
 # Configuration for new-pr-welcome - https://github.com/behaviorbot/new-pr-welcome
 
@@ -17,6 +17,6 @@ newPRWelcomeComment: >
 
 # Comment to be posted to on pull requests merged by a first time user
 firstPRMergeComment: >
-  Congrats 🎉 on merging your first pull request. Congratulations on merging your first contribution to **kidney-exchange**✨.
+  Congrats 🎉 on merging your first pull request. Congratulations on merging your first contribution to **kidney-exchange**✨
 
 # It is recommended to include as many gifs and emojis as possible!
