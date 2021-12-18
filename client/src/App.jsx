@@ -11,7 +11,7 @@ function App() {
   }
   function handleSubmit(e){
     e.preventDefault();
-    axios.post("/api/shorten",{
+    axios.post("/api",{
       url:url
     })
     .then((res)=>{
