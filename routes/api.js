@@ -15,7 +15,7 @@ router.route("/")
                 console.log("Entry found in database");
                 res.statusCode = 200;
                 res.setHeader("content-type", "application/json");
-                res.json({ "shorten": process.env.URL + doc._id });
+                res.json({ "shorten": process.env.URL + "/api/" + doc._id });
             } else {
                 console.log("This is new Url");
                 const uid = uniqid();
@@ -28,7 +28,7 @@ router.route("/")
                     .then((doc) => {
                         res.statusCode = 200,
                             res.setHeader("content-type", "application/json");
-                        res.json({ "shorten": process.env.URL + doc._id });
+                        res.json({ "shorten": process.env.URL + "/api/" + doc._id });
                     }, (err) => next(err))
                     .catch((err) => next(err));
 
