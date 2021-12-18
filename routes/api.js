@@ -28,7 +28,7 @@ router.route("/")
                     .then((doc) => {
                         res.statusCode = 200,
                             res.setHeader("content-type", "application/json");
-                        res.json({ "shorten": "localhost:5000/api/" + doc._id });
+                        res.json({ "shorten": process.env.URL + doc._id });
                     }, (err) => next(err))
                     .catch((err) => next(err));
 
