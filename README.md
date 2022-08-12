@@ -1,2 +1,2 @@
 # URL_Shortner
-![alt text](./Urlshortener.png)
+![alt text](./URL_Shortner.png)
