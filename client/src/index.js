@@ -11,12 +11,13 @@ import {
 
 ReactDOM.render(
 
-    <BrowserRouter>
-    <Routes>
-    <Route path="/" element={<App />}/>
-    <Route path="*" element={<NotFound/>}/>
-    </Routes>
-    </BrowserRouter>,
+    // <BrowserRouter>
+    // <Routes>
+    // <Route path="/" element={<App />}/>
+    // <Route path="*" element={<NotFound/>}/>
+    // </Routes>
+    // </BrowserRouter>,
+    <App/>,
    document.getElementById('root')
 );
 
