@@ -8,17 +8,23 @@ const apiRouter = require("./routes/api");
 
 const mongoose = require("mongoose");
 const url = process.env.MONGOURI;
-mongoose.connect(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-});
-const connect = mongoose.connection;
-connect.then((db) => {
-    console.log("Connected correctly to the server");
-}, (err) => {
-    console.log(err);
-});
+
+
+const connectWithRetry = () => {
+    mongoose
+      .connect(url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false
+      })
+      .then(() => console.log("Connected to DB"))
+      .catch((e) => {
+        console.log(e);
+        setTimeout(connectWithRetry, 5000);
+      });
+  };
+  
+connectWithRetry();
 var app = express();
 
 // view engine setup
