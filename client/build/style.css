@@ -1,0 +1,90 @@
+body{
+    background-color:#399499!important;
+background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png")!important;
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+*{font-family: 'Cardo', serif;
+    box-sizing: border-box;
+}
+
+.count{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #3a626a;
+    font-weight: bolder;
+    font-size: 20px;
+    color: white;
+    border-radius: 8px;
+}
+.count:hover{
+    background-color: #358fa1;
+}
+.row{
+    justify-content: center;
+}
+.heading{
+    
+    font-size: 60px;
+    margin-top: 70px;
+}
+
+.para{
+    
+    font-size: 21px;
+}
+
+.topic{
+    text-align: left !important;
+    font-weight: bolder;
+}
+.fcont{
+    margin-top: 70px;
+    align-items: center;
+    justify-content: center;
+    border: solid black 5px;
+    border-radius: 5%;
+    padding: 7% 10% 7% 10%;
+}
+
+.form-control{
+    height: calc(1.5em + 0.75rem + 14px)!important;
+}
+
+.btnf{
+    background-color: #151617!important;
+    border-color: #040404!important;
+    margin-top: 40px;
+}
+.res{
+    
+    font-size: 39px;
+    margin-top: 93px!important;
+}
+.result{
+    background-color: rgb(245, 245, 245);
+    height: 6vh;
+    border-radius: 5px;
+    
+        font-size: 26px;
+        justify-content: center;
+        text-align: center;
+    
+}
+
+.icon-btn{
+    background-color: #282323 !important;
+}
+
+.icon-btn:hover{
+    background-color: #0b0b0c96 !important;
+}
+
+@media only screen and (min-width: 996px) {
+
+    .icon-btn{
+        width: 70px !important;
+    }
+}
+
