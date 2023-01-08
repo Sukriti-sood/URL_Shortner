@@ -31,7 +31,7 @@ router.route("/api/new")
                
                 res.statusCode = 200;
                 res.setHeader("content-type", "application/json");
-                res.json({"shorten": process.env.URL +"/"+ doc.shortID});
+                res.json({"shorten": process.env.CLIENT_URL +"/"+ doc.shortID});
             } else {
              
                 const webaddres = new URL({
@@ -43,7 +43,7 @@ router.route("/api/new")
                     .then((doc) => {
                         res.statusCode = 200,
                             res.setHeader("content-type", "application/json");
-                        res.json({ "shorten": process.env.URL +"/"+ doc.shortID});
+                        res.json({ "shorten": process.env.CLIENT_URL +"/"+ doc.shortID});
                     }, )
                     .catch((err) => {res.statusCode = 400;
                       
@@ -65,7 +65,7 @@ router.route("/api/new-custom")
 
     if(checkDoc)
     {
-        res.status(200).json({"shorten":process.env.URL +"/"+ checkDoc.shortID})
+        res.status(200).json({"shorten":process.env.CLIENT_URL +"/"+ checkDoc.shortID})
     }
 
     const response = await URL.findOne({
@@ -95,33 +95,36 @@ router.route("/api/new-custom")
         .then((doc) => {
             res.statusCode = 200,
                 res.setHeader("content-type", "application/json");
-            res.json({"shorten": process.env.URL +"/"+ doc.shortID });
+            res.json({"shorten": process.env.CLIENT_URL +"/"+ doc.shortID });
         },)
         .catch((err) => {res.statusCode = 400;
         res.json({error: "Check URL or ShortID"});});
 })
 
-router.route("/:shortID")
+router.route("/api/:shortID")
     .get(async(req, res, next) => {
+        try {
+            const {shortID} = req.params;
+            if(!shortID){
+                return res.redirect(process.env.CLIENT_URL)
+            }
     
-        const {shortID} = req.params;
-        if(!shortID){
-            return res.redirect(process.env.CLIENT_URL)
+            const response = await URL.findOne({shortID:shortID});
+    
+            if(!response){
+                return res.redirect(process.env.CLIENT_URL)
+            } 
+    
+            await updateClicks(shortID);
+    
+            if (response.longURL.includes("http")) {
+                return res.status(200).json({"url": response.longURL});
+              } else {
+                return res.status(200).json({"url": "https://" + response.longURL});
+              }
+        } catch (error) {
+            console.log(error)
         }
-
-        const response = await URL.findOne({shortID:shortID});
-
-        if(!response){
-            return res.redirect(process.env.CLIENT_URL)
-        } 
-
-        await updateClicks(shortID);
-
-        if (response.longURL.includes("http")) {
-            return res.redirect(response.longURL);
-          } else {
-            return res.redirect("https://" + response.longURL);
-          }
     });
 
 
@@ -129,14 +132,10 @@ router.route("/api/click")
 .post(async(req, res, next) => {
     const { url } = req.body;
     
-    if(!url.includes("//localhost")){
-    if (!validator.isURL(url)) {
-        
-      return res.status(400).json({
+    if(!url.includes(process.env.CLIENT_URL))return res.status(400).json({
         error: "Invalid URL!",
       });
-    }
-}
+    
     const myURL = new url2.URL(url);
     
     const response = await URL.findOne({

@@ -8,6 +8,7 @@ import {
 
 import Home from './pages/home';
 import CountClick from './pages/click';
+import ShortId from './pages/shortId';
 
 function App() {
   
@@ -15,7 +16,8 @@ function App() {
     <BrowserRouter>
     <Routes>
     <Route path="/" element={<Home/>}/>
-    <Route path="/:click" element={<CountClick/>}/>
+    <Route path="/app/click" element={<CountClick/>}/>
+    <Route path="/:shortId" element={<ShortId/>}/>
     <Route path="*" element={<NotFound/>}/>
     </Routes>
     </BrowserRouter>

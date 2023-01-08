@@ -209,7 +209,7 @@ function Home() {
               </Button>
               <Button
                 onClick={() => {
-                  navigate("/click");
+                  navigate("/app/click");
                 }}
                 className="col-8 my-2 py-3 mx-2 col-sm-3"
               >
