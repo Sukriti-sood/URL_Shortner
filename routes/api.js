@@ -143,7 +143,7 @@ router.route("/api/click")
       shortID: myURL.pathname.slice(1),
     });
     if (!response) {
-      return res.status(400).json({
+      return res.status(301).json({
         error: "Invalid URL!",
       });
     }
